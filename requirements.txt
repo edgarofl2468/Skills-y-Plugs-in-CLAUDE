@@ -1,0 +1,5 @@
+# Dependencias de las habilidades yt-research y notebooklm.
+# yt-dlp sin tope: YouTube cambia a menudo y conviene la versión más reciente.
+yt-dlp>=2026.8.19
+# API no oficial de NotebookLM (Teng Lin); [browser] trae Playwright para `notebooklm login`.
+notebooklm-py[browser]>=0.8.4,<0.9

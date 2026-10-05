@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+# Credenciales de NotebookLM: nunca al repositorio
+.notebooklm/
+storage_state.json
+master_token.json

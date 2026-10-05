@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.venv/bin/python .claude/skills/yt-research/scripts/yt_research.py:*)",
+      "Bash(.venv/bin/python .claude/skills/notebooklm/scripts/nlm_ingest.py:*)",
+      "Bash(.venv/bin/notebooklm auth check:*)",
+      "Bash(.venv/bin/notebooklm list:*)",
+      "Bash(.venv/bin/notebooklm create:*)",
+      "Bash(.venv/bin/notebooklm source add:*)",
+      "Bash(.venv/bin/notebooklm source wait:*)",
+      "Bash(.venv/bin/notebooklm source list:*)",
+      "Bash(.venv/bin/notebooklm ask:*)",
+      "Bash(.venv/bin/notebooklm generate:*)",
+      "Bash(.venv/bin/notebooklm artifact list:*)",
+      "Bash(.venv/bin/notebooklm artifact wait:*)",
+      "Bash(.venv/bin/notebooklm artifact poll:*)",
+      "Bash(.venv/bin/notebooklm download:*)",
+      "Bash(mkdir -p research/:*)",
+      "Bash(scripts/setup.sh)"
+    ],
+    "deny": [
+      "Read(~/.notebooklm/**)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ \"$CLAUDE_CODE_REMOTE\" = \"true\" ]; then \"$CLAUDE_PROJECT_DIR\"/scripts/setup.sh >/dev/null 2>&1 || echo 'scripts/setup.sh falló; ejecútalo a mano' >&2; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
