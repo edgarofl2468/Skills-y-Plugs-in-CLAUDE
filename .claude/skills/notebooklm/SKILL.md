@@ -25,8 +25,8 @@ Continúa solo si `.status == "ok"` y `.checks.token_fetch == true`. Si falla, *
 pide al usuario que, en una terminal aparte (el login abre un navegador), ejecute:
 
 ```bash
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-notebooklm login
+source .venv/bin/activate && notebooklm login   # Mac / Linux
+.venv\Scripts\notebooklm login                  # Windows (PowerShell)
 ```
 
 y que te avise al terminar. No ejecutes `notebooklm login` tú mismo. Nunca muestres,

@@ -12,27 +12,44 @@ proyecto para Claude Code:
 
 Requiere Python 3.10+.
 
+### Mac / Linux
+
 ```bash
-git clone https://github.com/edgarofl2468/Skills-y-Plugs-in-CLAUDE
+git clone -b claude/sweet-meitner-alq9ba https://github.com/edgarofl2468/Skills-y-Plugs-in-CLAUDE
 cd Skills-y-Plugs-in-CLAUDE
 scripts/setup.sh            # crea .venv e instala yt-dlp y notebooklm-py[browser]
 ```
 
-En Windows (PowerShell):
+### Windows (PowerShell)
+
+Escribe una línea a la vez y pulsa Enter después de cada una:
 
 ```powershell
+cd $HOME\Documents
+git clone -b claude/sweet-meitner-alq9ba https://github.com/edgarofl2468/Skills-y-Plugs-in-CLAUDE
+cd Skills-y-Plugs-in-CLAUDE
 python -m venv .venv
-.venv\Scripts\pip install -U -r requirements.txt
+.venv\Scripts\python -m pip install -U -r requirements.txt
 ```
+
+Si `python` no se reconoce, instala Python con `winget install Python.Python.3.12`,
+cierra PowerShell, ábrelo de nuevo y repite desde `cd $HOME\Documents\Skills-y-Plugs-in-CLAUDE`.
 
 ## Autenticación con Google (una sola vez)
 
 Abre **una terminal aparte** (el login abre un navegador) en la carpeta del repositorio:
 
 ```bash
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+source .venv/bin/activate        # Mac / Linux
 notebooklm login                 # la primera vez descarga Chromium (~170 MB)
 notebooklm auth check --test --json   # debe decir "status": "ok"
+```
+
+En Windows (PowerShell), sin activar nada:
+
+```powershell
+.venv\Scripts\notebooklm login
+.venv\Scripts\notebooklm auth check --test --json
 ```
 
 La sesión se guarda en `~/.notebooklm/` (fuera del repositorio). Son credenciales de tu
